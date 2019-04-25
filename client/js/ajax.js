@@ -31,7 +31,7 @@ function pedirDatosListaPostUsuarios(idUsuario, callbackConsultarPostOK){
 	  callbackConsultarPostOK(postUsuario);
 	}
   
-	requestLista.open("GET", "http://localhost:3000/users/:id")
+	requestLista.open("GET", "http://localhost:3000/users/" + idUsuario)
 	requestLista.send()
   
 }
@@ -46,6 +46,6 @@ function consultarComentarios(idPost, callback){
 		callback(contenidoComentarios);
 	}
 
-	request.open("GET", "https://jsonplaceholder.typicode.com/comments?postId=" + idPost);
+	request.open("GET", "https://localhost:3000/comments?postId=" + idPost);
 	request.send();
   }

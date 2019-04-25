@@ -25,6 +25,19 @@ app.get("/users/:id", (req,res) => {
     })
 });
 
+
+app.get("/comments", (req, res) => {
+  getComments(comentarios => {
+    res.send(comentarios);
+  })
+});
+
+app.get("/comments?postId", (req,res) => {
+  getComment(req.query.postId , comentario => {
+    res.send(comentario);
+  })
+})
+
 app.listen(port, function(){
     console.log(`Escuchando el puerto ${port} con Express`);
 });
@@ -61,3 +74,25 @@ function getUsuarios(success) {
   
     });
   }
+
+function getComments(success){
+  fs.readFile(path.join(__dirname, "comments.json"), function(err, data){
+    if(err == undefined){
+      listaComentarios = JSON.parse(data);
+     
+      success(listaComentarios);
+    }
+  })
+};
+
+function getComment(postId, success){
+  fs.readFile(path.join(__dirname, 'comments.json'), function(err, data) {
+    if(err == undefined){
+      listaComments = JSON.parse(data);
+      let comment = listaComments.find(item => item.id == postId)
+
+      success(comment);
+    }
+  })
+
+}
