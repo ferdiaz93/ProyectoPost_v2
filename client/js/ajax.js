@@ -31,7 +31,7 @@ function pedirDatosListaPostUsuarios(idUsuario, callbackConsultarPostOK){
 	  callbackConsultarPostOK(postUsuario);
 	}
   
-	requestLista.open("GET", "http://localhost:3000/users/" + idUsuario)
+	requestLista.open("GET", "http://localhost:3000/posts?userId=" + idUsuario)
 	requestLista.send()
   
 }
