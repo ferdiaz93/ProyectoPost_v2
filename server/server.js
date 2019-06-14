@@ -29,17 +29,24 @@ app.get("/users/:id", (req, res) => {
 
 //pedido a la ruta posts ==> me trae todos los posts
 app.get("/posts", (req, res) => {
-  getPosts(listaPosts => {
-    res.send(listaPosts);
-  });
+  if(req.query.userId){
+    let userId = req.query.userId;
+    getPost(userId, post =>{
+      res.send(post);
+    })
+  }else{
+    getPosts(listaPosts => {
+      res.send(listaPosts);
+  
+  })};
 });
 
 //pedido a la ruta posts con un query determinado ==> me deberia traer los posts de un userId especifico
-app.get("/posts", (req, res) => {
-  getPost(req.query.userId, post => {
-    res.send(post);
-  });
-});
+// app.get("/posts", (req, res) => {
+//   getPost(req.query.userId, post => {
+//     res.send(post);
+//   });
+// });
 
 //pedido a la ruta comments ==> me trae todos los comentarios
 app.get("/comments", (req, res) => {
@@ -108,8 +115,7 @@ function getPost(userId, success) {
   fs.readFile(path.join(__dirname, "posts.json"), function(err, data) {
     if (err == undefined) {
       listaPosts = JSON.parse(data);
-      let posts = listaPosts.filter(item => item.id == userId);
-
+      let posts = listaPosts.filter(item => item.userId == userId);
       success(posts);
     }
   });

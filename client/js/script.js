@@ -21,9 +21,9 @@ function crearBotones(nombre, id) {
 	var texto = document.createTextNode(nombre);
 	boton.appendChild(texto);
 
-	boton.addEventListener('click', function() {
+	boton.addEventListener('click', function () {
 		verPostsUsuario(id);
-	} );
+	});
 
 	divContenedorBotonesUsuario.appendChild(boton);
 }
@@ -35,30 +35,30 @@ function verPostsUsuario(idUsuario) {
 	// Se vacía el div de posts por si hay elementos previos.
 
 	divContenedorListaPosts.innerHTML = "";
-  
+
 	// Se crea variable para guardar el array de posts, se llena con la función de consulta
 	pedirDatosListaPostUsuarios(idUsuario, function callback(datos) {
-	  // Se recorre el array de posts y para cada uno se crea el elemento en pantalla
-	  for (let i = 0; i < datos.length; i++) {
-	
-		var nuevoDiv = document.createElement("div");
-		nuevoDiv.setAttribute("class", "post");
-		var textDiv = document.createTextNode(JSON.stringify(datos[i].title));
-		nuevoDiv.append(textDiv);
+		// Se recorre el array de posts y para cada uno se crea el elemento en pantalla
+		for (let i = 0; i < datos.length; i++) {
 
-		nuevoDiv.addEventListener("click", function(){
+			var nuevoDiv = document.createElement("div");
+			nuevoDiv.setAttribute("class", "post");
+			var textDiv = document.createTextNode(JSON.stringify(datos[i].title));
+			nuevoDiv.append(textDiv);
 
-			verPostCompleto(datos[i].id, datos[i].body)
-		})
-		divContenedorListaPosts.appendChild(nuevoDiv);
-	  }
+			nuevoDiv.addEventListener("click", function () {
+
+				verPostCompleto(datos[i].id, datos[i].body)
+			})
+			divContenedorListaPosts.appendChild(nuevoDiv);
+		}
 	})
-  }
-  
+}
 
-  
+
+
 //funcion que crea los elementos necesarios para mostrar el User y el Comment
-function verPostCompleto(idPost, body){
+function verPostCompleto(idPost, body) {
 
 	divContenedorComentarios.innerHTML = "";
 	divContenedorBodyPost.innerHTML = "";
@@ -71,9 +71,9 @@ function verPostCompleto(idPost, body){
 
 
 
-	consultarComentarios(idPost, function callback(datos){
+	consultarComentarios(idPost, function callback(datos) {
 
-		for(let i = 0 ; i < datos.length ; i++){
+		for (let i = 0; i < datos.length; i++) {
 			var nuevoTitulo = document.createElement("h3");
 			nuevoTitulo.setAttribute("class", "nombre-comentario");
 			var nuevoParrafo = document.createElement("p");
@@ -84,7 +84,7 @@ function verPostCompleto(idPost, body){
 			nuevoTitulo.appendChild(textoUser);
 			nuevoParrafo.appendChild(textoComentario);
 
-			
+
 			divContenedorComentarios.appendChild(nuevoTitulo);
 			divContenedorComentarios.appendChild(nuevoParrafo);
 		}
