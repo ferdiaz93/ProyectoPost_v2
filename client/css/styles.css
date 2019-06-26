@@ -7,12 +7,38 @@ body{
 .contenedor-botones-usuario {
     font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 20%;
-    height: 0%;
+    width: 100%;
+    height: 80%;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 
+.contenedor-lista-posts {
+    display:flex;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    width: 400px;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.contenedor-body-posts{
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    color:blue;
+    line-height: 1.6;
+}
+
+.contenedor-comentarios-posts{
+    background-color: rgb(216, 215, 215);
+}
+
+
+.contenido-body-comentarios{
+    display: flex;
+    margin-left: 30px;
+    width:50%;
+}
 
 .boton-usuario {
     font-family: 'Roboto', sans-serif;    
@@ -28,22 +54,17 @@ body{
     border-radius: 8px;
     
 }
+
+.boton-usuario:hover{
+    background-color: #6324B8;
+}
 .contenido-completo{
     display:flex;
 
 }
 
-.contenido-body-comentarios{
-    display: flex;
-    flex-direction: column;
-}
-.contenedor-lista-posts {
-    display:flex;
-    font-family: 'Roboto', sans-serif;
-    color:white;
-    width: 400px;
-    flex-direction: column;
-}
+
+
 
 .post{
     font-family: 'Roboto', sans-serif;
@@ -57,18 +78,6 @@ body{
     background-color: white;
     color: black;
 }
-
-.contenedor-body-posts{
-    font-family: 'Roboto', sans-serif;
-    width: 100%;
-    color:blue;
-    line-height: 1.6;
-}
-
-.contenedor-comentarios-posts{
-    background-color: rgb(216, 215, 215);
-}
-
 
 .nombre-comentario{
     margin-top: 30px;
