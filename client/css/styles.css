@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+body{
+    background-color: #121212;
+}
 
 .contenedor-botones-usuario {
     font-family: 'Roboto', sans-serif;
@@ -37,18 +40,22 @@
 .contenedor-lista-posts {
     display:flex;
     font-family: 'Roboto', sans-serif;
-    color:red;
+    color:white;
     width: 400px;
     flex-direction: column;
-    margin-right: 30px;
 }
 
 .post{
     font-family: 'Roboto', sans-serif;
     padding: 15px;
-    margin: 10px;
     cursor: pointer;
-    background-color: black;
+    background-color: #8f007a;
+
+}
+
+.post:hover{
+    background-color: white;
+    color: black;
 }
 
 .contenedor-body-posts{
