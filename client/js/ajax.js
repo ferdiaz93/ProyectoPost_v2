@@ -1,51 +1,28 @@
 function pedirDatos(cbRequest) {
-	var request = new XMLHttpRequest();
+	fetch('http://localhost:3000/users')
+	.then(response =>response.json())
+	.then(response => {cbRequest(response)})
+	.catch("Error", Error);
 
-	request.onload = function() {
-		var datosCambiados = JSON.parse(request.responseText);
-
-		cbRequest(datosCambiados);
-		//        cbRequest(JSON.parse(request.responseText))
-	};
-
-	request.open('GET', 'http://localhost:3000/users');
-	request.send();
 }
 
 //funcion que pide los datos de los posts
 function pedirDatosListaPostUsuarios(idUsuario, callbackConsultarPostOK){
-	var requestLista = new XMLHttpRequest();
-  
-	requestLista.onload = function () {
-	  
-	  var postUsuario = JSON.parse(requestLista.responseText);
 
-	
-	//   var respuesta = [];
-    
-	//   postUsuario.map(post => {
-	// 		if (post.userId === idUsuario) {
-	// 		  respuesta.push(post);
-	// 		}	
-	//   	});
-	  callbackConsultarPostOK(postUsuario);
-	}
-  
-	requestLista.open("GET", "http://localhost:3000/posts?userId=" + idUsuario)
-	requestLista.send()
-  
+	fetch(`http://localhost:3000/posts?userId=${idUsuario}`)
+	.then(response => response.json())
+	.then(response => {callbackConsultarPostOK(response)})
+	.catch("Error", Error)
+
+
 }
   // funcion que pide los datos de los comentarios
 
 function consultarComentarios(idPost, callback){
-	var request = new XMLHttpRequest();
+	
+	fetch(`https://localhost:3000/comments?postId=${idPost}`)
+	.then(response => response.json())
+	.then(response => {callback(response)})
+	.catch("Error",Error)
 
-	request.onload = function(){
-
-		var contenidoComentarios = JSON.parse(request.responseText);
-		callback(contenidoComentarios);
-	}
-
-	request.open("GET", "https://localhost:3000/comments?postId=" + idPost);
-	request.send();
-  }
+}
