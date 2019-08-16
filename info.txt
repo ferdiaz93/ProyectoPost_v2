@@ -1,0 +1,9 @@
+
+-npm i -g json-server
+
+Crear archivo Json fuera de la carpeta app (no tiene que haber una carpeta public)
+
+-json-server --watch db.json (nombre del archivo json)
+
+
+//Empezar con las actions, seguir con los reducer y terminar en el componente
